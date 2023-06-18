@@ -1,0 +1,39 @@
+空間1次元の場合、コントロールボリュームは格子点Pとその左右の格子点によって囲まれます。格子点Pの位置を$x_j$とし、時間を$n\Delta t$とします（$n$は整数）。また、$\Delta x$は格子間隔を表します。
+
+まず、左右の粒子束密度$\Gamma_{j-\frac{1}{2}}^n$および$\Gamma_{j+\frac{1}{2}}^n$について考えます。これらの粒子束密度はそれぞれ、時間ステップ$n$における格子点$j-\frac{1}{2}$と$j+\frac{1}{2}$の面を横切る粒子の流れを表します。
+
+時間および空間について積分すると、以下のような式が得られます。
+
+$\int_{t_n}^{t_{n+1}}\int_{x_{j-\frac{1}{2}}}^{x_{j+\frac{1}{2}}}\frac{\partial \rho}{\partial t} dxdtdydz + \int_{x_{j-\frac{1}{2}}}^{x_{j+\frac{1}{2}}}\int_{t_n}^{t_{n+1}}\frac{\partial \rho}{\partial x} dtdxdydz = 0$
+
+ここで、密度の時間微分$\frac{\partial \rho}{\partial t}$および密度の空間微分$\frac{\partial \rho}{\partial x}$を式(2.1.16)に代入して整理すると、
+
+$\int_{t_n}^{t_{n+1}}\int_{x_{j-\frac{1}{2}}}^{x_{j+\frac{1}{2}}}\left(-\frac{\partial}{\partial x}(\rho v)\right) dxdtdydz + \int_{x_{j-\frac{1}{2}}}^{x_{j+\frac{1}{2}}}\int_{t_n}^{t_{n+1}}\left(-\frac{\partial}{\partial t}(\rho v)\right) dtdxdydz = 0$
+
+積分の順序を変更して整理すると、
+
+$\int_{t_n}^{t_{n+1}}\left[-(\rho v){x{j+\frac{1}{2}}}\Delta x + (\rho v){x{j-\frac{1}{2}}}\Delta x\right]dtdydz + \int_{x_{j-\frac{1}{2}}}^{x_{j+\frac{1}{2}}}\left[-(\rho v)_t\Delta t + (\rho v)_t\Delta t\right]dxdydz = 0$
+
+ここで、$(\rho v){x{j-\frac{1}{2}}}$は格子点$j-\frac{1}{2}$における密度と速度の積、$(\rho v){x{j+\frac{1}{2}}}$は格子点$j+\frac{1}{2}$における密度と速度の積を表します。また、$(\rho v)_t$は時間ステップ$n$における密度と速度の時間微分を表します。
+
+この式を整理すると、
+
+$\left[-(\rho v){x{j+\frac{1}{2}}}\Delta x + (\rho v){x{j-\frac{1}{2}}}\Delta x\right]\Delta t\Delta y\Delta z + \left[-(\rho v)_t\Delta t + (\rho v)_t\Delta t\right]\Delta x\Delta y\Delta z = 0$
+
+$\left[(\rho v){x{j-\frac{1}{2}}}- (\rho v){x{j+\frac{1}{2}}}\right]\Delta x\Delta y\Delta z = 0$
+
+この式を変形すると、
+
+$\left[(\rho v){x{j-\frac{1}{2}}} - (\rho v){x{j+\frac{1}{2}}}\right]\Delta x\Delta y\Delta z = 0$
+
+$(\rho v){x{j-\frac{1}{2}}} - (\rho v){x{j+\frac{1}{2}}} = 0$
+
+したがって、以下の式が得られます。
+
+$\Gamma_{j-\frac{1}{2}}^n - \Gamma_{j+\frac{1}{2}}^n = 0$
+
+つまり、
+
+$\frac{\rho_j^{n+1}-\rho_j^n}{\Delta t} \Delta x \Delta y \Delta z = \left[\Gamma_{j-\frac{1}{2}}^n - \Gamma_{j+\frac{1}{2}}^n\right] \Delta x \Delta y \Delta z$
+
+以上のように、格子点Pを囲むコントロールボリュームについて時間および空間について積分することで、与えられた式が導かれます。
